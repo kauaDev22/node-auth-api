@@ -23,6 +23,18 @@ connection.query('CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMAR
     console.log('Tabela criada com sucesso');
 });
 
-
+connection.query(`
+  CREATE TABLE IF NOT EXISTS imagens (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255),
+    dados_imagem LONGBLOB
+  )
+`, (error, result) => {
+  if (error) {
+    console.error('Erro ao criar tabela:', error);
+    return;
+  }
+  console.log('Tabela de imagem criada com sucesso');
+});
 module.exports = connection;
 
